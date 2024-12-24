@@ -1,6 +1,14 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import "../styles/globals.css";
+import type { AppType } from "next/app";
+import { trpc } from "../utils/trpc";
+import { ToastContainer } from "react-toastify";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
+const MyApp: AppType = ({ Component, pageProps }) => {
+  return (
+    <>
+      <ToastContainer />
+      <Component {...pageProps} />;
+    </>
+  );
+};
+export default trpc.withTRPC(MyApp);
